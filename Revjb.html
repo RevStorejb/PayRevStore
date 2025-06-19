@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .payment-option {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .payment-option h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        .payment-details {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            word-break: break-all;
+        }
+        .qr-code {
+            max-width: 250px;
+            margin: 15px auto;
+        }
+        .qr-code img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #eee;
+        }
+        .copy-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .copy-btn:hover {
+            background-color: #45a049;
+        }
+        .instructions {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment Options</h1>
+    
+    <div class="payment-option">
+        <h2>DANA</h2>
+        <p>Send payment to this DANA number:</p>
+        <div class="payment-details" id="dana-number">
+            081220568534
+        </div>
+        <button class="copy-btn" onclick="copyToClipboard('dana-number')">Copy Number</button>
+        <div class="instructions">
+            <p>1. Open DANA app</p>
+            <p>2. Go to Send Money</p>
+            <p>3. Enter the number above</p>
+            <p>4. Complete your payment</p>
+        </div>
+    </div>
+    
+    <div class="payment-option">
+        <h2>GoPay</h2>
+        <p>Send payment to this GoPay number:</p>
+        <div class="payment-details" id="gopay-number">
+            081324982853
+        </div>
+        <button class="copy-btn" onclick="copyToClipboard('gopay-number')">Copy Number</button>
+        <div class="instructions">
+            <p>1. Open Gojek app</p>
+            <p>2. Go to GoPay</p>
+            <p>3. Select "Send Money"</p>
+            <p>4. Enter the number above</p>
+            <p>5. Complete your payment</p>
+        </div>
+    </div>
+    
+    <div class="payment-option">
+        <h2>QRIS</h2>
+        <p>Scan this QR code with your mobile banking or e-wallet app:</p>
+        <div class="qr-code">
+            <img src="https://files.catbox.moe/0ro09v.jpg" alt="QRIS Payment Code">
+        </div>
+        <div class="instructions">
+            <p>1. Open your banking/e-wallet app</p>
+            <p>2. Select QRIS payment option</p>
+            <p>3. Scan the QR code above</p>
+            <p>4. Enter payment amount</p>
+            <p>5. Complete your payment</p>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent.trim();
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard: ' + text);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
